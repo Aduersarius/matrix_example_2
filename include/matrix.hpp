@@ -1,5 +1,5 @@
 #include <iostream>
-template <typename T>
+template <class T>
 class matrix_t {
 private:
 	T ** elements_;
