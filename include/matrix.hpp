@@ -1,8 +1,8 @@
 #include <iostream>
-
+template <typename T>
 class matrix_t {
 private:
-	int ** elements_;
+	T ** elements_;
 	std::size_t rows_;
 	std::size_t collumns_;
 public:
