@@ -132,7 +132,7 @@ matrix_t<T> & matrix_t<T>::operator +=( matrix_t const & other )
 }
 
 template <typename T>
-matrix_t & matrix_t<T>::operator *=( matrix_t const & other )
+matrix_t<T> & matrix_t<T>::operator *=( matrix_t const & other )
 {
    *this = *this * other;
     return *this;
