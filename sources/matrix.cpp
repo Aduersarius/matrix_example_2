@@ -3,7 +3,7 @@ template <typename T>
 matrix_t<T>::matrix_t() : elements_{ nullptr }, rows_{ 0 }, collumns_{ 0 }
 {
 }
-
+template <typename T>
 matrix_t<T>::matrix_t( matrix_t const & other )
 {       
 	rows_ = other.rows();
@@ -17,6 +17,7 @@ matrix_t<T>::matrix_t( matrix_t const & other )
 	}
 }
 
+template <typename T>
 matrix_t<T> & matrix_t<T>::operator =( matrix_t const & other )
 {
 	if (this != &other) {
@@ -36,6 +37,7 @@ matrix_t<T> & matrix_t<T>::operator =( matrix_t const & other )
 	return *this;
 }
 
+template <typename T>
 matrix_t<T>::~matrix_t()
 {
 	for (std::size_t i = 0; i < rows_; i++) {
@@ -44,16 +46,19 @@ matrix_t<T>::~matrix_t()
 		delete[] elements_;
 }
 
+template <typename T>
 std::size_t matrix_t<T>::rows() const
 {
     return rows_;
 }
 
+template <typename T>
 std::size_t matrix_t<T>::collumns() const
 {
     return collumns_;
 }
 
+template <typename T>
 matrix_t<T> matrix_t<T>::operator +( matrix_t const & other ) const
 {
 	matrix_t result;
@@ -72,6 +77,7 @@ matrix_t<T> matrix_t<T>::operator +( matrix_t const & other ) const
 	return result;
 }
 
+template <typename T>
 matrix_t<T> matrix_t<T>::operator -( matrix_t const & other ) const
 {
 	matrix_t result;
@@ -90,6 +96,7 @@ matrix_t<T> matrix_t<T>::operator -( matrix_t const & other ) const
 	return result;
 }
 
+template <typename T>
 matrix_t<T> matrix_t<T>::operator *( matrix_t const & other ) const
 {
 	if (collumns_ == other.rows_) {
@@ -110,24 +117,28 @@ matrix_t<T> matrix_t<T>::operator *( matrix_t const & other ) const
 			return result;
 }
 
+template <typename T>
 matrix_t<T> & matrix_t<T>::operator -=( matrix_t const & other )
 {
 	*this = *this - other;
 	return *this;
 }
 
+template <typename T>
 matrix_t<T> & matrix_t<T>::operator +=( matrix_t const & other )
 {
 	*this = *this + other;
 	return *this;
 }
 
+template <typename T>
 matrix_t & matrix_t<T>::operator *=( matrix_t const & other )
 {
    *this = *this * other;
     return *this;
 }
 
+template <typename T>
 std::istream & matrix_t<T>::read( std::istream & stream )
 {
     std::size_t rows;
@@ -169,7 +180,8 @@ std::istream & matrix_t<T>::read( std::istream & stream )
 	return stream;
 }
 
-std::ostream & matrix_t::write( std::ostream & stream ) const
+template <typename T>
+std::ostream & matrix_t<T>::write( std::ostream & stream ) const
 {
     stream << rows_ << ", " << collumns_;
     for( std::size_t i = 0; i < rows_; ++i ) {
