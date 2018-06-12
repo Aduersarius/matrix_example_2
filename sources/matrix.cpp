@@ -64,7 +64,7 @@ matrix_t<T> matrix_t<T>::operator +( matrix_t const & other ) const
 	matrix_t result;
 	result.rows_ = rows_;
 	result.collumns_ = collumns_;
-		if !(rows_ == other.rows_ && collumns_ == other.collumns_) {
+		if (!(rows_ == other.rows_ && collumns_ == other.collumns_)) {
 			throw "ошибка в матрицах";
 		}
 			result.elements_ = new T* [rows_];
@@ -83,7 +83,7 @@ matrix_t<T> matrix_t<T>::operator -( matrix_t const & other ) const
 	matrix_t result;
 	result.rows_ = rows_;
 	result.collumns_ = collumns_;
-		if !(rows_ == other.rows_ && collumns_ == other.collumns_) {
+		if (!(rows_ == other.rows_ && collumns_ == other.collumns_)) {
 			throw "ошибка в матрицах";
 		}
 			result.elements_ = new T *[rows_];
@@ -99,7 +99,7 @@ matrix_t<T> matrix_t<T>::operator -( matrix_t const & other ) const
 template <typename T>
 matrix_t<T> matrix_t<T>::operator *( matrix_t const & other ) const
 {
-	if (collumns_ == other.rows_) {
+	if (!(collumns_ == other.rows_)) {
 		throw "ошибка в матрицах";
 	}
 			matrix_t result;
